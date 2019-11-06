@@ -3,13 +3,13 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/css?family=Do+Hyeon" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet">
-    <title>Playground</title>
-    {% block styles %} {% bootstrap_css %} {% endblock %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Do+Hyeon" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet">
+  <title>Playground</title>
+  {% block styles %} {% bootstrap_css %} {% endblock %}
 
 </head>
 <!-- <style>
@@ -38,19 +38,38 @@
         font-family: 'Acme', sans-serif;
     }
 </style> -->
+
 <body>
-   {% include "navbar.html" %}
-    <br><br>
-    {% block content %}
-    <div class="container">
-        <h1>Playground!</h1>
+  {% include "navbar.html" %}
+  <br><br>
+  {% block content %}
+  <div class="container">
+    <h1>Playground!</h1>
+  </div>
+
+  <div class="">
+    <p>Find Your Preferred Playground</p>
+  </div>
+  <div class="row">
+    {% for image in images %}
+    <div class="col-md-3">
+      <div class="col-md-12 col-md-offset-1 col-sm-12">
+        <div class="uk-card uk-card-default uk-card-body uk-width-25-2@m" style="margin-bottom: 5px;">
+          <img style=" margin-top: 10px; margin-bottom: 5px;width:350px; height:200px;" src="{{image.photo.url}}"
+            class="img-thumbnail photo" alt="Image">
+          <hr class="uk-divider-icon">
+          <p class="uk-card-title" style="color: black;font-family: 'Acme', sans-serif;">{{image.location}}</p>
+          <p class="uk-card-title" style="color: black;font-family: 'Acme', sans-serif;">{{image.description}}</p>
+        </div>
+      </div>
     </div>
 
-    <div class="card">
-        <p>Find Your Preferred Playground</p>
-    </div>
-<!--Script files-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> {% bootstrap_javascript %} {% endblock %}
+    {% endfor %}
+
+  </div>
+  <!--Script files-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> {% bootstrap_javascript %}
+  {% endblock %}
 </body>
 
 </html>

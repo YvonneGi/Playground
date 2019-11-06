@@ -62,7 +62,7 @@ class Category(models.Model):
 
 
 class Playground(models.Model):
-    image = models.ImageField(upload_to = 'images/')
+    photo = models.ImageField(upload_to = 'images/')
     description = models.CharField(max_length=3000)
     location = models.CharField(max_length=255)
     post_date=models.DateTimeField(auto_now_add=True)

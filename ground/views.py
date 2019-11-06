@@ -12,7 +12,8 @@ def welcome(request):
     title='Playground'
     profiles= Profile.objects.all()
     current_user = request.user
-    return render(request, 'welcome.html',{title:'title',"profiles":profiles,"current_user":current_user})
+    images = Playground.objects.all()
+    return render(request, 'welcome.html',{title:'title',"profiles":profiles,"current_user":current_user,"images":images})
 
 @login_required(login_url='/accounts/login/')
 def profile(request,id):
@@ -36,3 +37,7 @@ def edit_profile(request):
         form=ProfileForm(instance=request.user.profile)
      
     return render(request,'edit_profile.html',locals())
+
+def all_playgrounds(request):
+    images = Playground.get_images()
+    return render(request, 'welcome.html', {"images": images})
